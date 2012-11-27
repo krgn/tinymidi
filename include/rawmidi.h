@@ -136,16 +136,16 @@ struct _snd_rawmidi {
 */
 
 /* open and return a device file descriptor */
-static inline int rawmidi_open_device(const char *filename, int fmod);
+int rawmidi_open_device(const char *filename, int fmod);
 int rawmidi_hw_print_info(const char *filepath);
 int rawmidi_hw_open(snd_rawmidi_t **inputp, snd_rawmidi_t **outputp,
                     const char *filename, const char *name, int mode);
-static int rawmidi_hw_params(snd_rawmidi_t *rmidi, snd_rawmidi_params_t * params);
-static int rawmidi_hw_status(snd_rawmidi_t *rmidi, snd_rawmidi_status_t * status);
-static int rawmidi_hw_drop(snd_rawmidi_t *rmidi);
-static int rawmidi_hw_drain(snd_rawmidi_t *rmidi);
-static ssize_t rawmidi_hw_write(snd_rawmidi_t *rmidi, const void *buffer, size_t size);
-static ssize_t rawmidi_hw_read(snd_rawmidi_t *rmidi, void *buffer, size_t size);
-static int rawmidi_hw_close(snd_rawmidi_t *rmidi);
-static int rawmidi_hw_nonblock(snd_rawmidi_t *rmidi, int nonblock);
-static int rawmidi_hw_info(snd_rawmidi_t *rmidi, snd_rawmidi_info_t * info);
+int rawmidi_hw_params(snd_rawmidi_t *rmidi, snd_rawmidi_params_t * params);
+int rawmidi_hw_status(snd_rawmidi_t *rmidi, snd_rawmidi_status_t * status);
+int rawmidi_hw_drop(snd_rawmidi_t *rmidi);
+int rawmidi_hw_drain(snd_rawmidi_t *rmidi);
+ssize_t rawmidi_hw_write(snd_rawmidi_t *rmidi, const void *buffer, size_t size);
+ssize_t rawmidi_hw_read(snd_rawmidi_t *rmidi, void *buffer, size_t size);
+int rawmidi_hw_close(snd_rawmidi_t *rmidi);
+int rawmidi_hw_nonblock(snd_rawmidi_t *rmidi, int nonblock);
+int rawmidi_hw_info(snd_rawmidi_t *rmidi, snd_rawmidi_info_t * info);

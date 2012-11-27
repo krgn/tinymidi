@@ -12,7 +12,7 @@ static const snd_rawmidi_ops_t snd_rawmidi_hw_ops = {
 	.read = rawmidi_hw_read,
 };
 
-static int rawmidi_hw_close(snd_rawmidi_t *rmidi)
+int rawmidi_hw_close(snd_rawmidi_t *rmidi)
 {
 	snd_rawmidi_hw_t *hw = rmidi->private_data;
 	int err = 0;
@@ -28,7 +28,7 @@ static int rawmidi_hw_close(snd_rawmidi_t *rmidi)
 	return err;
 }
 
-static int rawmidi_hw_nonblock(snd_rawmidi_t *rmidi, int nonblock)
+int rawmidi_hw_nonblock(snd_rawmidi_t *rmidi, int nonblock)
 {
 	snd_rawmidi_hw_t *hw = rmidi->private_data;
 	long flags;
@@ -48,7 +48,7 @@ static int rawmidi_hw_nonblock(snd_rawmidi_t *rmidi, int nonblock)
 	return 0;
 }
 
-static int rawmidi_hw_info(snd_rawmidi_t *rmidi, snd_rawmidi_info_t * info)
+int rawmidi_hw_info(snd_rawmidi_t *rmidi, snd_rawmidi_info_t * info)
 {
 	snd_rawmidi_hw_t *hw = rmidi->private_data;
 	info->stream = rmidi->stream;
@@ -60,7 +60,7 @@ static int rawmidi_hw_info(snd_rawmidi_t *rmidi, snd_rawmidi_info_t * info)
 }
 
 /* opens a device file and returns file descriptor */
-static inline int rawmidi_open_device(const char *filename, int fmode)
+int rawmidi_open_device(const char *filename, int fmode)
 {
 	int fd;
 
@@ -191,7 +191,7 @@ int rawmidi_hw_print_info(const char *filepath) {
 }
 
 
-static int rawmidi_hw_params(snd_rawmidi_t *rmidi, snd_rawmidi_params_t * params)
+int rawmidi_hw_params(snd_rawmidi_t *rmidi, snd_rawmidi_params_t * params)
 {
 	snd_rawmidi_hw_t *hw = rmidi->private_data;
 	params->stream = rmidi->stream;
@@ -202,7 +202,7 @@ static int rawmidi_hw_params(snd_rawmidi_t *rmidi, snd_rawmidi_params_t * params
 	return 0;
 }
 
-static int rawmidi_hw_status(snd_rawmidi_t *rmidi, snd_rawmidi_status_t * status)
+int rawmidi_hw_status(snd_rawmidi_t *rmidi, snd_rawmidi_status_t * status)
 {
 	snd_rawmidi_hw_t *hw = rmidi->private_data;
 	status->stream = rmidi->stream;
@@ -213,7 +213,7 @@ static int rawmidi_hw_status(snd_rawmidi_t *rmidi, snd_rawmidi_status_t * status
 	return 0;
 }
 
-static int rawmidi_hw_drop(snd_rawmidi_t *rmidi)
+int rawmidi_hw_drop(snd_rawmidi_t *rmidi)
 {
 	snd_rawmidi_hw_t *hw = rmidi->private_data;
 	int str = rmidi->stream;
@@ -224,7 +224,7 @@ static int rawmidi_hw_drop(snd_rawmidi_t *rmidi)
 	return 0;
 }
 
-static int rawmidi_hw_drain(snd_rawmidi_t *rmidi)
+int rawmidi_hw_drain(snd_rawmidi_t *rmidi)
 {
 	snd_rawmidi_hw_t *hw = rmidi->private_data;
 	int str = rmidi->stream;
@@ -235,7 +235,7 @@ static int rawmidi_hw_drain(snd_rawmidi_t *rmidi)
 	return 0;
 }
 
-static ssize_t rawmidi_hw_write(snd_rawmidi_t *rmidi, const void *buffer, size_t size)
+ssize_t rawmidi_hw_write(snd_rawmidi_t *rmidi, const void *buffer, size_t size)
 {
 	snd_rawmidi_hw_t *hw = rmidi->private_data;
 	ssize_t result;
@@ -245,7 +245,7 @@ static ssize_t rawmidi_hw_write(snd_rawmidi_t *rmidi, const void *buffer, size_t
 	return result;
 }
 
-static ssize_t rawmidi_hw_read(snd_rawmidi_t *rmidi, void *buffer, size_t size)
+ssize_t rawmidi_hw_read(snd_rawmidi_t *rmidi, void *buffer, size_t size)
 {
 	snd_rawmidi_hw_t *hw = rmidi->private_data;
 	ssize_t result;
