@@ -1,0 +1,57 @@
+*tinymidi* - a small C library for doing MIDI on GNU/Linux
+==========
+
+### Abstract ###
+
+On Android, its difficult to work with USB-Midi devices. Even if building your
+own ROM and adding kernel-level support for such devices, there is no library to
+access those drivers functionality easily as alsa-lib has been removed from
+android a while ago and cannot be built against bionic. This small library
+intends to provide simple access to such raw Midi device files for read and
+writing data to.
+
+## Building ##
+
+Building tinymidi should be straight forward. On GNU/Linux or equivalent, just
+run `make` in the project directory. Adding tinymidi to an android project is
+slightly more involved, as it requires using the JNI as well as a kernel
+configured to include raw MIDI drivers.
+
+### Dependencies: ###
+
+GNU make, gcc, and glibc
+
+### GNU/Linux ###
+
+1) configure the target installation directory by editing `Makefile`
+
+2) run `make`
+
+3) run `sudo make install`
+
+### Android ###
+
+(TODO)
+
+## Usage ##
+
+1) include `tinimidi.h` in your project
+
+2) open a midi device file (e.g. `/dev/midi2`) using `rawmidi_hw_open` (see
+tests for more detailed information)
+
+3) read/write from/to the device using `rawmidi_hw_write` & `rawmidi_hw_read`
+
+4) close the device file descriptor using `rawmidi_rw_close`
+
+## Licence ##
+
+*tinymidi* is licensed under the `GNU LESSER GENERAL PUBLIC LICENSE Version 3, 29 June 2007`
+as per [http://www.gnu.org/copyleft/lesser.html](http://www.gnu.org/copyleft/lesser.html)
+
+## Credit ##
+
+Large parts of the source code are inspired by, or exerpts from the the
+*alsa-lib* project, which can be found here: 
+[http://www.alsa-project.org/](http://www.alsa-project.org/) - thanks to them
+for their hard work!
